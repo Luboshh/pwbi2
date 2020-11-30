@@ -1,10 +1,39 @@
-Vytvořte report:
+Stránka "srazky - zakladni prehled"
 
 Kalkulované míry / sloupce
 - Maximální denní srážky ve vybrané loktalitě
 
 Vizualizace
+
+- Tabulka
+  - sloupce: Lokalita
+  - řádky: Rok
+  - hodnoty: Srážky
+  
 - Průřez nad sloupcem Lokalita
 - Sloupcový graf:
   - osa x: Rok
   - osa y: Srážky
+    ______________________________________________________________________________________________________
+  
+Stránka "srazky vyvoj"
+Kalkulované míry / sloupce
+  - Srážky meziročně, tj. počítáme rozdíl mezi sumou srážek v daném roce a sumou srážek v předchozím roce
+  - Srážky k atuálnímu dnu, tj. počítáme sumu srážek v jednotlivých letech k maximálnímu datumu posledního roku.
+    Např. pokud je poslední datum srážek pro danou lokalitu 30.11.2020, tak počítáme souhrn srážek pro 30.11. každého jednoho roku.
+ - Srážky v předchozím roce ve vybrané lokalitě
+
+ - Průřez nad sloupcem Lokalita
+ - Spojnicový graf:
+  - primární osa: srážky
+  - sekundární osa: srážky v předchozím roce
+  
+  
+   ______________________________________________________________________________________________________
+ 
+ BONUS:
+ - U průřezu nastavte omezení jediného výběru, tj. uživatel nemůže vybrat více lokalit
+ - Doplňte názvy os a legendy u sloupcového grafu
+ - Hodnoty v tabulce zaokrouhlete na 1 desetinné místo
+  
+ 
