@@ -1,0 +1,10 @@
+Vytvořte report:
+
+Kalkulované míry / sloupce
+- Maximální denní srážky ve vybrané loktalitě
+
+Vizualizace
+- Průřez nad sloupcem Lokalita
+- Sloupcový graf:
+  - osa x: Rok
+  - osa y: Srážky
