@@ -1,0 +1,78 @@
+Vytvořte agregovanou tabulku "agregovana data" za pomoci SUMMARIZE a k ní dopočítejte sloupce za pomoci funkce ADDCOLUMNS 
+Agregovaná tabulka bude mít sloupce vycházející z původní (neagregované) tabulky data:
+- NAME
+- Rok
+- Mesic
+- Max. teplota (maximum z maximální teploty)
+- Min. teplota (minimum z minimální teploty)
+- Srazky (suma srážek)
+- Pocet tropickych dnu (počet dnů, kdy maximální teplota > 30
+
+Dopočítaný sloupec Mesic s tropickym dnem: Pokud je maximum maximální teploty >30, true, jinak false
+
+___________________________________________________________________________
+
+Stránka "teploty zakladni ukazatele"
+
+Kalkulované míry / sloupce
+
+- Maximální teplota ve vybrané lokalitě za celou dobu
+- Maximum maximální teploty v roce vybraném v parametru (viz níže)
+
+Vizualizace
+- Parametr s hodnotami 2000 - 2020, inkrementace po 1
+- Sloupcový graf
+  - osa x: Měsíc
+  - hodnoty: Maximum z maximální teploty v roce vybraném v parametru
+  
+ ___________________________________________________________________________
+ 
+ Stránka "srážky kumulativně"
+ 
+ Kalkulované míry / sloupce
+ 
+ - Kumulativní srážky v rámci roku vybraném v parametru, viz níže
+ - Suma srážek v roce vybraném v parametru, viz níže
+ 
+ Vizualizace
+ - Parametr vytvořený v rámci prvního cvičení
+ - Sloupcový graf:
+  - osa x: Měsíc
+  - osa y: Kumulativní srážky v rámci roku vybraném v parametru
+  
+ - Tabulka se sloupci:
+  - Město
+  - Lokalita
+  - Suma srážek v roce vybraném v parametru
+ 
+   ___________________________________________________________________________
+ 
+ BONUS1:
+ Kalkulovaná míra: Maximum ročních srážek pro vybranou lokalitu, a to napříč všemi obdobími
+ Pozn: zkuste dočasnou agregovanou tabulku vytvořenou v rámci míry :-)
+
+
+   ___________________________________________________________________________
+
+
+BONUS2:
+
+Stránka "teploty - vývoj"
+
+Kalkulované míry / sloupce:
+- maximální teplota v lokalitě vybrané v průřezu (viz níže)
+- maximální teplota v lokalitě vybrané v průřezu (viz níže) pro rok 2019
+- maximální teplota ve všech lokalitách
+- maximální teplota ve všech lokalitách pro rok 2019
+
+Vizualizace
+- Průřez nad lokalitou
+- Karty:
+  - maximální teplota v lokalitě vybrané v průřezu
+  - maximální teplota v lokalitě vybrané v průřezu pro rok 2019
+  - maximální teplota ve všech lokalitách
+  - maximální teplota ve všech lokalitách pro rok 2019
+- Spojnicový graf:
+  - osa x: Datum
+  - osa y: Maximální teplota (maximum)
+
