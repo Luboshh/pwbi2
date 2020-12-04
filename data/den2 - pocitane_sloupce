@@ -1,0 +1,37 @@
+Pozn. agregovana data
+
+_zeme (agregovana data) = 
+
+LOOKUPVALUE('Dim Lokality'[Zeme],'Dim Lokality'[Lokalita],'agregovana data'[NAME])
+//RELATED('Dim Lokality'[Zeme])
+
+___________________________________________________________________________________________________
+Pozn. Dim Lokality
+
+_max teplota (dim lokality) = 
+MAXX(
+RELATEDTABLE('agregovana data'),'agregovana data'[Max. teplota])
+
+___________________________________________________________________________________________________
+Pozn. data
+
+_tyden (data) = 
+RELATED('Dim Datumy'[Tyden])
+
+___________________________________________________________________________________________________
+Pozn. data
+
+_max teplota (data) = 
+// hledame maximum z maximalnich teplot v tabulce, ktera neni propojena aktivni relaci
+CALCULATE(MAX('agregovana data'[Max. teplota]),
+USERELATIONSHIP(data[NAME],'agregovana data'[NAME]))
+
+___________________________________________________________________________________________________
+pozn __praha libus a ruzyne po letech
+
+_pocet tydnu (__praha libus a ruzyne po letech) = 
+
+//otacime aktivni filter z tabulky __praha libus a ruzyne po letech smerem k Dim Datumy
+
+CALCULATE(DISTINCTCOUNT('Dim Datumy'[Tyden]), 
+CROSSFILTER('__praha libus a ruzyne po letech'[Rok],'Dim Datumy'[Rok],Both))
