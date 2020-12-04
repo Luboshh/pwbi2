@@ -1,0 +1,20 @@
+
+- Vytvořit parametr pro výběr jediné hodnoty (celé číslo) mezi 2000 - 2020 (inkrementace po 1)
+
+
+Stránka1
+Průřez nad sloupcem data[Name]]
+Sloupcový graf:
+Kumulativní srážky v jednotlivých data[Mesic] za data[Rok] odpovídající hodnotě v parametru a vybranou lokalitu v průřezu
+
+Stránka2
+
+Tabulka se sloupci:
+data[Name]
+data[Rok]
+Kalkulované míry:
+	- suma srážek v daném roce
+	- suma srážek v předchozím roce
+	- rozdíl ve srážkách v daném a předchozím roce
+	- srážky za maximální rok pro danou data[Name]
+	- rozdíl srážek v daném 
