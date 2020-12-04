@@ -1,0 +1,15 @@
+__praha libus a ruzyne po letech = 
+
+SUMMARIZE(
+    FILTER(
+        data,data[NAME] = "PRAHA LIBUS" ||
+        data[NAME] = "RUZYNE"
+        
+        
+        ),
+        data[NAME],
+        data[Rok],
+        "Srazky",
+        SUM(data[PRCP]),
+        "Max. teplota",
+        MAX(data[TMAX]))
