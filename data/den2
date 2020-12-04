@@ -1,0 +1,116 @@
+
+
+__suma srazek = 
+//SUM akceptuje všechny filtry kontextu filtru. V tomto pripade nepotrebujeme kontext menit, staci tato funkce.
+//Pri pouziti funkce CALCULATE staci zapics CALCULATE(SUM(data[PRCP]))
+SUM(data[PRCP])
+
+________________________________________________________________________________________________________________
+
+__suma srazek vsechny lokality v roce = 
+
+/*
+Suma srazek za vsechny lokality v danem roce
+*/
+
+CALCULATE(SUM(data[PRCP]),
+ALL('data'[NAME]) // Ignorujeme filtr nad sloupcem 'data'[NAME], filtry nad ostatnimi sloupci ponechavame
+)
+
+________________________________________________________________________________________________________________
+
+__suma srazek vsechny lokality vsechny roky = 
+
+//suma srazek napric vsemi roky a lokalitami
+
+/*
+Rusi filtry nad sloupci 'data'[PRCP] a 'data'[Rok], pokud bude rok ci lokalita
+filtrovana v jine (propojene) tabulce, tak tyto dalsi filtry budou akceptovany
+pokud bychom chteli vsechny lokality a roky za vsech okolnosti, zapis by byl
+CALCULATE(SUM(data[PRCP]),ALL(data)
+*/
+CALCULATE(SUM(data[PRCP]),
+ALL(
+    data[NAME],data[Rok]) // rusi filtry pouze nad data[NAME],data[Rok]
+    
+    )
+    
+ 
+ ________________________________________________________________________________________________________________
+ 
+ __suma srazek lokalita predchozi rok = 
+
+/*
+Suma srazek pro danou lokalitu a rok predchazejici roku na radku
+*/
+
+CALCULATE(SUM(data[PRCP]),
+FILTER(
+    ALL(data[Rok]) // rusi filtr nad sloupcem 'data'[Rok], ostatni filtry ponechava
+    ,data[Rok] = MAX(data[Rok])-1 // nastavuje novy filtr nad sloupec rok, kdy hodnota filtru se dopocitava pro kazdy radek jako maximum roku na danem radku - 1
+    )
+)
+ ________________________________________________________________________________________________________________
+ 
+ 
+ __suma srazek maximalni rok = 
+
+/*
+Suma srazek za posledni (maximalni) rok pro danou lokalitu
+
+*/
+
+VAR maximalni_rok_lokalita = CALCULATE(MAX(data[Rok]),ALL(data[Rok])) // rusime filtr nad sloupcem data[Rok], ostatni filtry ponechavame
+RETURN
+CALCULATE(SUM(data[PRCP]),
+FILTER(ALL(data[Rok]),data[Rok] = maximalni_rok_lokalita))
+
+ ________________________________________________________________________________________________________________
+ 
+ 
+ __pocet mesicu se srazkami nad 50mm = 
+
+/*
+Agregace dat na uroven mesicu, filtr lokality a roku prebirame z kontextu.
+Pocet mesicu, ve kterych byl objem srazek vyssi 50 mm pro danou lokalitu a dany rok
+*/
+
+// Varianta s CALCULATE 
+/*
+CALCULATE(DISTINCTCOUNT(data[Mesic]),
+FILTER(
+    SUMMARIZE(
+        data,data[Mesic],"srazky",
+        SUM(data[PRCP])),[srazky] >50))
+
+*/
+
+//Varianta s COUNTX
+COUNTX(
+    FILTER(
+    SUMMARIZE(
+        data,
+        data[Mesic],
+        "Srazky",
+        SUM(data[PRCP])),[Srazky]>50),
+        data[Mesic])
+  
+________________________________________________________________________________________________________________
+
+
+__pocet mesicu s tropickym dnem = 
+
+/*
+Pocet hodnot ve sloupci 'agregovana data'[Mesic] s hodnotou true.
+Jedna o tabulku nepropojenou aktivni relaci, tj. budeme ji filtrovat za pomoci funkce filter,
+do ktere dosazujeme hodnoty z aktualniho radku vizualu
+
+*/
+
+CALCULATE(
+    COUNT('agregovana data'[Mesic]),
+    FILTER(
+        'agregovana data',
+        'agregovana data'[Rok] = MAX(data[Rok]) // rok v agregovane tabulce rovna se maximalnimu roku na danem radku
+            && 'agregovana data'[NAME] IN VALUES(data[NAME])  // hodnota ve sloupci NAME odpovida hodnotam ve sloupci data[NAME], alternativne by slo spocitat s FIRSTNONBLANK
+            && 'agregovana data'[Mesic s tropickym dnem] = true)) // filtrovani hodnot ve sloupci [Mesic s tropickym dnem], kde je hodnota true
