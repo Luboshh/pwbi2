@@ -17,4 +17,31 @@ Kalkulované míry:
 	- suma srážek v předchozím roce
 	- rozdíl ve srážkách v daném a předchozím roce
 	- srážky za maximální rok pro danou data[Name]
+	
+	
+--------------------------------------------------------
+Vytvořit agregovanou tabulku 'agregovana data' z tabulky 'data' se sloupci
+NAME,
+ROK,
+"Srazky" (suma data[PRCP])
+"Max. teplota" (max z data[TMAX])
+"Mesic s tropickou teplotou" - hodnota true/false, pokud max z[TMAX] pro dany mesic je >30
+
+Do tabulky 'data' přes relaci dopočítat
+- Číslo týdne hodnoty z 'Dim datumy' pro data['Date']
+
+Do tabulky 'dim lokality' dopocitat maximum z "Max. teplota" tabulky 'agregovana data'
+--------------------------------------------------------
+
+Stránka 3
+
+Sloupcový graf:
+- data[Mesic]
+- data[Prcp]
+
+Nad grafem tooltip / popis, v nem tabulka se sloupci: data[NAME], data[PRCP]
+
+Tabulka se sloupci: data[Name], data[PRCP]
+
+--------------------------------------------------------
 
