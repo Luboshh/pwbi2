@@ -1,16 +1,4 @@
-Vytvořte agregovanou tabulku "agregovana data" za pomoci SUMMARIZE a k ní dopočítejte sloupce za pomoci funkce ADDCOLUMNS 
-Agregovaná tabulka bude mít sloupce vycházející z původní (neagregované) tabulky data:
-- NAME
-- Rok
-- Mesic
-- Max. teplota (maximum z maximální teploty)
-- Min. teplota (minimum z minimální teploty)
-- Srazky (suma srážek)
-- Pocet tropickych dnu (počet dnů, kdy maximální teplota > 30
 
-Dopočítaný sloupec Mesic s tropickym dnem: Pokud je maximum maximální teploty >30, true, jinak false
-
-___________________________________________________________________________
 
 Stránka "teploty zakladni ukazatele"
 
