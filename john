@@ -1,0 +1,33 @@
+
+Create indexes (single column tables with distinct values)
+- Dim Names
+- Dim Dates
+
+Calculate new columns in Dim Dates:
+	- Year of a given date
+	- Quarter of a given date
+	- Month of a given date
+	- Day of a given date
+
+Create a dashboard with this visuals:
+- Slicer (Dim Names[Name])
+- Slicer (Dim Dates[Year])
+- Chart (+BONUS):
+	- Months
+	- PRCP in the Month of the Year selected by a user and the Name selected by a user
+	- cummulative PRCP in the Year selected by a user and the Name selected by a user
+
+- Chart:
+	- Months
+	- PRCP in the Month of the Year selected by a user and the Name selected by a user
+	- PRCP in the Month of the Year in which there was max amount of PRCP in a user selected Name
+
+Table:
+	- Year
+	- SUM of PRCP in a given Year
+	- Difference between SUM of PRCP in a given Year and the previous Year
+
+BONUS
+- if the PRCP in the Month of the Year selected by a user were less than PRCP in the previous Year, make the color
+of the data "#ff8c00" else "#40e0d0"
+
