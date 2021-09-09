@@ -156,4 +156,13 @@ SELECT SUM(data[PRCP])  GROUP BY rok,name)
 CALCULATE(
     SUM(data[PRCP]),
     ALL('dim datum'[Mesic]))
+    
+    
+    --------------
+    
+    __suma srazek v dane lokalite prvnim mesici daneho roku = 
+
+CALCULATE(
+    SUM(data[PRCP]),
+    FILTER(ALL('dim datum'[Mesic]),'dim datum'[Mesic] = 1))
    
