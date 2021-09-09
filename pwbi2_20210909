@@ -180,9 +180,9 @@ CALCULATE(
    
 --------------------------------------------------------
 
-__suma srazek 2000 v RUZYNE =
+___suma srazek 2000 v RUZYNE = 
 
 CALCULATE(
     SUM(data[PRCP]),
     FILTER('dim lokality','dim lokality'[NAME] = "RUZYNE"),
-    FILTER('dim datum','dim datum'[Rok] = 2010))
+    FILTER('dim datum','dim datum'[Rok] = 2000))
