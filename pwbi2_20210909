@@ -6,3 +6,16 @@ SUMMARIZE(
     "Srazky",SUM(data[PRCP]), -- novy sloupec definovany funkci SUM()
     "Max. teplota",MAX(data[TMAX]) -- novy sloupec definvoany funkci MAX()
     ) 
+    
+    
+    
+    ---------------------
+    
+    tabulka datum cas = 
+ADDCOLUMNS(
+CROSSJOIN(
+CALENDARAUTO(),
+UNION(
+    ROW("Cas",TIME(9,0,0)),
+    ROW("Cas",TIME(12,0,0))
+)),"Datum a cas", [Date]+[Cas])
