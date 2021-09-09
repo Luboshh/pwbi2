@@ -118,3 +118,26 @@ FILTER(
 data[PRCP])
 
 RETURN srazky_v_danem_roce - srazky_min_rok
+
+
+
+----------------------------------------------
+
+datum max srazek = 
+
+/*
+- maximalni denni srazky napric lokalitami a datumy
+- posledni den maximalnich srazek
+*/
+
+VAR max_srazky = MAXX(
+    ALL(data),
+data[PRCP])
+
+VAR posledni_den_max_srazek = 
+
+MAXX(
+FILTER(
+    ALL(
+    data),data[PRCP] = max_srazky),data[DATE])
+return posledni_den_max_srazek
