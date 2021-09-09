@@ -1,6 +1,7 @@
 
 
 agregovana data = 
+
 ADDCOLUMNS(
 SUMMARIZE(
     data, -- tabulka, ze ktere bereme data
@@ -8,9 +9,12 @@ SUMMARIZE(
     "Srazky",SUM(data[PRCP]), -- novy sloupec definovany funkci SUM()
     "Max. teplota",MAX(data[TMAX]) -- novy sloupec definvoany funkci MAX()
     ) ,
+ -- za pomoci funkce ADDCOLUMNS pridavame novy sloupec tabulky,
+ -- jehoz navratova hodnota je podminena hodnotou sloupce agregovane tabulky   
 "Tropicky den",
 IF([Max. teplota] >= 34,"Ano","Ne")
 )
+
 
     
     ---------------------
