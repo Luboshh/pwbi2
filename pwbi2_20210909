@@ -27,3 +27,22 @@ UNION(
     ROW("Cas",TIME(9,0,0)),
     ROW("Cas",TIME(12,0,0))
 )),"Datum a cas", [Date]+[Cas])
+
+
+-----------------------------
+
+suma vybrany index + index 9 v danem roce = 
+
+-- suma za uzivatelem vybrany index
+VAR tento_rok = sUM(data[PRCP])
+
+-- suma za index 9
+VAR index_9 = 
+SUMX(
+    FILTER(ALL(data),
+    data[Index] = 9
+    && data[Rok] in VALUES(data[Rok])
+    ),
+data[PRCP])
+
+return index_9 + tento_rok 
