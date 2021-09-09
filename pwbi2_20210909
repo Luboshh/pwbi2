@@ -178,3 +178,12 @@ CALCULATE(
     ALL('dim lokality'[NAME])
     )
    
+--------------------------------------------------------
+
+__suma srazek dany rok vsechny lokality = 
+
+CALCULATE(
+    SUM(data[PRCP]),
+    ALL('dim datum'[Rok]),
+    ALL('dim lokality'[NAME])
+    )
