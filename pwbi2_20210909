@@ -186,3 +186,5 @@ CALCULATE(
     SUM(data[PRCP]),
     FILTER('dim lokality','dim lokality'[NAME] = "RUZYNE"),
     FILTER('dim datum','dim datum'[Rok] = 2000))
+
+Odkaz na vypracovane cviceni: https://github.com/petrrozkosny/pwbi2/blob/main/pwbi%20-%20vypracovane%20cviceni.pbix
