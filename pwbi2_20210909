@@ -46,3 +46,35 @@ SUMX(
 data[PRCP])
 
 return index_9 + tento_rok 
+
+
+-----------------------------------------
+
+_suma srazek mezirocne = 
+
+// -- suma srazek v danem roce a dane lokalite
+SUM(data[PRCP])
+
+-- minus
+-
+
+-- suma srazek v predchozim roce a dane lokalite
+SUMX(
+FILTER(
+    /*
+    Krok 1: Funkce ALL vraci vsechna data z tabulky data,
+    tj. rusime vsechny aplikovane filtry
+    */
+    ALL(data),
+
+    /*
+    Krok 2: Funkce FILTER filtruje tabulku vracenou krokem 1,
+    aplikujeme filtry na sloupce [Rok] a [Index]
+
+    */
+    data[Rok] = MAX(data[Rok])-1 -- max. rok vraci cele cislo, odecitame 1
+    -- hledame vsechnz index, ktere zustaly v tabulce dim lokality
+    -- pote, co uzivatel vybral hodnotu z prurezu
+    && data[Index] IN VALUES ('dim lokality'[Index])),
+-- krok 3: tabulku vracenou funkci FILTER() scitame nad sloupcem PRCP
+data[PRCP]) 
