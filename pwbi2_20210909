@@ -78,3 +78,23 @@ FILTER(
     && data[Index] IN VALUES ('dim lokality'[Index])),
 -- krok 3: tabulku vracenou funkci FILTER() scitame nad sloupcem PRCP
 data[PRCP]) 
+
+
+
+---------------------------
+
+prumer srazek v danem roce v uzivatelem vybrane lokalite vs prumer vse = 
+/*
+Rozdíl mezi:
+- prumer srazek v danem roce v uzivatelem zvolene lokalite
+- prumer srazek v danem roce ve vsech lokalitach
+*/
+IF(ISFILTERED('dim lokality'[NAME]),
+AVERAGE(data[PRCP])
+- 
+AVERAGEX(
+    FILTER(
+        ALL(data),
+    data[Rok] IN VALUES('dim datum'[Rok])),
+    data[PRCP]),"Nemáš tam filtr!")
+
