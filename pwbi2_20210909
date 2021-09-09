@@ -98,3 +98,23 @@ AVERAGEX(
     data[Rok] IN VALUES('dim datum'[Rok])),
     data[PRCP]),"Nemáš tam filtr!")
 
+-------------------------------------
+
+suma srazek v danem roce vs suma srazek v minimalnim roce = 
+
+-- suma srazek v danem roce
+VAR srazky_v_danem_roce = SUM(data[PRCP])
+-- minimalni rok
+VAR minimalni_rok = 
+MINX(
+    ALL(data),data[Rok])
+--  suma srazek v minimalnim roce
+VAR srazky_min_rok = 
+SUMX(
+FILTER(
+    ALL(data),data[Rok] = minimalni_rok
+    &&data[Index] in VALUES('dim lokality'[Index])
+    ),
+data[PRCP])
+
+RETURN srazky_v_danem_roce - srazky_min_rok
