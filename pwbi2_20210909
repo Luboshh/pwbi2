@@ -141,3 +141,19 @@ FILTER(
     ALL(
     data),data[PRCP] = max_srazky),data[DATE])
 return posledni_den_max_srazek
+
+
+----------------------------
+
+__suma srazek v danem roce dane lokality = 
+
+-- suma srazek za vsechny mesice daneho roku a dane lokality
+
+/*
+SELECT SUM(data[PRCP])  GROUP BY rok,name)
+*/
+
+CALCULATE(
+    SUM(data[PRCP]),
+    ALL('dim datum'[Mesic]))
+   
