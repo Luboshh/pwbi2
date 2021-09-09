@@ -1,1 +1,8 @@
 
+
+SUMMARIZE(
+    data, -- tabulka, ze ktere bereme data
+    data[Index],data[Rok], -- sloupce, podle kterych agregujeme
+    "Srazky",SUM(data[PRCP]), -- novy sloupec definovany funkci SUM()
+    "Max. teplota",MAX(data[TMAX]) -- novy sloupec definvoany funkci MAX()
+    ) 
