@@ -245,3 +245,11 @@ ALL('dim lokality'[NAME]),ALL('dim datumy'[Mesic]))
 
 CALCULATE(sum(data[PRCP]),
 FILTER(ALL('dim datumy'[Mesic]),'dim datumy'[Mesic]<=MAX('dim datumy'[Mesic])))
+
+
+-------------------------
+
+10 = 
+
+CALCULATE(
+    MAX(data[PRCP]),ALL('dim datumy'[Mesic]))
