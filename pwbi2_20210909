@@ -188,3 +188,22 @@ CALCULATE(
     FILTER('dim datum','dim datum'[Rok] = 2000))
 
 Odkaz na vypracovane cviceni: https://github.com/petrrozkosny/pwbi2/blob/main/pwbi%20-%20vypracovane%20cviceni.pbix
+
+
+
+------------------------------------------------
+
+4 = 
+
+VAR prvni_mesic_roku_lokality = 
+CALCULATE(
+    MONTH(
+    MIN(data[DATE]))
+    ,ALL('dim datumy'[Mesic]))
+
+RETURN
+
+SUM(data[PRCP])
+/
+CALCULATE(
+    SUM(data[PRCP]),FILTER(ALL('dim datumy'[Mesic]),'dim datumy'[Mesic] = prvni_mesic_roku_lokality)) -1
