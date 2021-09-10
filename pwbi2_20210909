@@ -253,3 +253,10 @@ FILTER(ALL('dim datumy'[Mesic]),'dim datumy'[Mesic]<=MAX('dim datumy'[Mesic])))
 
 CALCULATE(
     MAX(data[PRCP]),ALL('dim datumy'[Mesic]))
+   
+ -----------------------
+ 
+ 11 = 
+
+MAXX(
+    SUMMARIZE(data,'dim datumy'[Rok],'dim lokality'[NAME],"rocni srazky",SUM(data[PRCP])),[rocni srazky])
