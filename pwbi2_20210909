@@ -218,3 +218,13 @@ MAX(data[PRCP])
 CALCULATE(
     MAX(data[PRCP]),
     ALL('dim datumy'[Mesic]))
+    
+    
+------------
+
+6 = 
+
+MAX(data[PRCP])
+-
+CALCULATE(MAX(data[PRCP]),
+ALL('dim lokality'[NAME]))
