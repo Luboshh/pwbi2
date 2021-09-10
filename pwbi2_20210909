@@ -207,3 +207,14 @@ SUM(data[PRCP])
 /
 CALCULATE(
     SUM(data[PRCP]),FILTER(ALL('dim datumy'[Mesic]),'dim datumy'[Mesic] = prvni_mesic_roku_lokality)) -1
+    
+    
+    
+    -----------
+5 = 
+
+MAX(data[PRCP])
+-
+CALCULATE(
+    MAX(data[PRCP]),
+    ALL('dim datumy'[Mesic]))
